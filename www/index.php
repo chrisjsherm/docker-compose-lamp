@@ -14,7 +14,7 @@
                         LAMP STACK
                     </h1>
                     <h2 class="subtitle">
-                        Your local development environment
+                        Linux Apache PHP MySQL development environment
                     </h2>
                 </div>
             </div>

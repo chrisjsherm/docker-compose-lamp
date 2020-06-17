@@ -19,7 +19,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           local: ./build
-          remote: scp
+          remote: docker-compose-lamp
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
