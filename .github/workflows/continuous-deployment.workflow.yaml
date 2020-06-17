@@ -1,0 +1,25 @@
+name: continuous deployment
+on: push
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      # Check out repository under $GITHUB_WORKSPACE, so the GitHub Action can access it
+      - uses: actions/checkout@v2
+
+      # Run a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          mkdir ./build
+          cp -R ./{config,www} ./build
+          cp -R ./docker-compose.yml ./build
+
+      - name: Copy build files to remote server
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: ./build
+          remote: scp
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
