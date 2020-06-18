@@ -1,7 +1,5 @@
 # LAMP stack built with Docker Compose
 
-![Landing Page](https://preview.ibb.co/gOTa0y/LAMP_STACK.png)
-
 A basic LAMP stack environment built using Docker Compose. It consists of the following:
 
 - PHP
@@ -22,8 +20,8 @@ Use appropriate php version as needed:
 ## Installation
 
 - Clone this repository on your local computer
-- configure .env as needed
-- Run the `docker-compose up -d`.
+- Configure .env as needed
+- Run the `docker-compose` command
 
 ```shell
 git clone https://github.com/sprintcube/docker-compose-lamp.git
@@ -41,11 +39,11 @@ Your LAMP stack is now ready!! You can access it via `http://localhost`.
 ### Configuration
 
 This package comes with default configuration options. You can modify them by creating `.env` file in your root directory.
-To make it easy, just copy the content from `sample.env` file and update the environment variable values as per your need.
+To make it easy, just copy the content from `sample.env` file and update the environment variable values per your needs.
 
 ### Configuration Variables
 
-There are following configuration variables available and you can customize them by overwriting in your own `.env` file.
+There are the following configuration variables available. You can customize them by overwriting in your own `.env` file.
 
 ---
 
@@ -157,9 +155,22 @@ password: tiger
 
 It comes with Redis. It runs on default port `6379`.
 
-## Why you shouldn't use this stack unmodified in production
+## Modify this stack before deploying to production
 
-In Production you should modify at a minimum the following subjects:
+In Production you should modify, at a minimum, the following:
 
 - php handler: mod_php=> php-fpm
 - secure mysql users with proper source IP limitations
+
+## Deployment
+
+Each time you merge a commit to master, a GitHub Actions workflow copies the
+following directories to the remote server.
+
+- config
+- www
+
+### Secrets
+
+The address of the remote server is defined in this repository's GitHub Secrets.
+The credentials for connecting the the remote server are defined there as well.
