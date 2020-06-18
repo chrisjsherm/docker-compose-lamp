@@ -159,7 +159,7 @@ It comes with Redis. It runs on default port `6379`.
 
 In Production you should modify, at a minimum, the following:
 
-- php handler: mod_php=> php-fpm
+- If you want to support HTTP/2, migrate the php handler: mod_php=> php-fpm
 - secure mysql users with proper source IP limitations
 
 ## Deployment
